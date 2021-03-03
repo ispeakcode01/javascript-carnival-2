@@ -16,8 +16,13 @@ table {
   margin: 0 auto;
 }
 
+#mole {
+  width: 75px;
+  height: auto;
+}
+
 td {
-  background-color: BurlyWood;
+  background-color: rgb(68, 36, 36);
   height: 75px;
   width: 75px;
 }
