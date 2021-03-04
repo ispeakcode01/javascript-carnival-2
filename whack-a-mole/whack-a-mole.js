@@ -8,8 +8,8 @@ const ROWS = document.querySelectorAll('tr').length
 const COLS = document.querySelector('tr').childElementCount
 const AREA = ROWS * COLS
 
+init()
 function init() {
-
   var randStartingPos = getRandomGridPosition()
   spawnMole(randStartingPos.x, randStartingPos.y)
 }
