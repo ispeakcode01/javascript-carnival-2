@@ -2,11 +2,19 @@ var grid = (function() {
 
     const ROW = 7
     const COL = 5
+    var holes = []
 
     init()
 
     function init() {
         createCellElement()
+    }
+
+    function playAudio(id) {
+        var playObj = document.getElementById(id)
+        playObj.load()
+        playObj.play()
+        return playObj
     }
 
     function createCellElement() {
@@ -17,7 +25,12 @@ var grid = (function() {
                 var td = document.createElement('td')
                 td.id = `row-${row} col-${col}`
                 if (row % 2 != 0 && col % 2 != 0) {
+                    holes.push({
+                        x: row,
+                        y: col
+                    })
                     var img = document.createElement('img')
+                    img.className = "hole"
                     img.src = "./images/hole.png"
                     td.appendChild(img)
 
@@ -29,11 +42,19 @@ var grid = (function() {
     }
 
     function getElement(x, y) {
+        console.log(x + " " + y)
+        console.log(`row-${x} col-${y}`)
         return document.getElementById(`row-${x} col-${y}`)
     }
 
-    return {
+    function getHoles() {
+        return holes
+    }
 
+    return {
+        getElement: getElement,
+        playAudio: playAudio,
+        getHoles: getHoles
     }
 
 }())
