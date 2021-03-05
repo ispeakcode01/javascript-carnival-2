@@ -15,6 +15,12 @@ var grid = (function() {
             var tr = document.createElement('tr')
             for (var col=0; col<COL; col++) {
                 var td = document.createElement('td')
+                if (row % 2 != 0 && col % 2 != 0) {
+                    var img = document.createElement('img')
+                    img.src = "./images/hole.png"
+                    td.appendChild(img)
+
+                }
                 tr.appendChild(td)
             }
             table.appendChild(tr)
