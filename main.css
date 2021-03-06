@@ -2,13 +2,31 @@ body {
 	font-family: 'Rye', cursive;
 	background-color: #5e401e;
   color: black;
+  text-align: center;
 }
 
-h1 { 
-	margin-top: 100px;
-	margin-bottom: 50px;
-	font-size: 3em;
+h3 { 
+	margin-top: 50px;
+	font-size: 2em;
 	text-align: center;
+}
+
+#hammer {
+  
+}
+
+.initialHammer {
+  -webkit-transform: rotate(-45deg);
+  -moz-transform: rotate(-45deg);
+  -o-transform: rotate(-45deg);
+  transform: rotate(-45deg);
+}
+
+.hit {
+  -webkit-transform: rotate(-90deg);
+  -moz-transform: rotate(-90deg);
+  -o-transform: rotate(-90deg);
+  transform: rotate(-90deg);
 }
 
 .header {

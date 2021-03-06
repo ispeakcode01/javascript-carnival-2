@@ -44,8 +44,6 @@ var grid = (function() {
     }
 
     function getElement(x, y) {
-        console.log(x + " " + y)
-        console.log(`row-${x} col-${y}`)
         return document.getElementById(`row-${x} col-${y}`)
     }
 

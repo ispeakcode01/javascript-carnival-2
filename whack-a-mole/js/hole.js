@@ -1,9 +1,9 @@
-var Hole = function(x, y, time) {
+var Hole = function(x, y) {
     
     var moles = ["mole-10", "mole-20", "mole-30"]
     var xPos = x
     var yPos = y
-    var intervalTime = time
+    var intervalTime
     var interval
     var container 
     var hole
@@ -21,17 +21,18 @@ var Hole = function(x, y, time) {
 
     function init() {
         container = grid.getElement(xPos, yPos)
-        
         hole = container.getElementsByClassName('hole')[0]
         img = document.createElement('img')
     }
 
+    this.setIntervalTime = function(time) {
+        intervalTime = time
+    }
+
     function whack() {
         playAudio('whack')
-
         calculateNewScore()
         removeMole()
-        
     }
 
     function calculateNewScore() {
@@ -53,10 +54,7 @@ var Hole = function(x, y, time) {
         var newScore = parseInt(scoreElement.innerHTML) - 100
         if (newScore < 0)
             newScore = 0
-
         setScore(newScore)
-
-
     }
 
     function removeMole() {
@@ -83,10 +81,7 @@ var Hole = function(x, y, time) {
         } else {
             removeMole()
         }
-
     }
-
-    
 
     function removeChild(element) {
         var child = container.childNodes[0]
@@ -94,7 +89,6 @@ var Hole = function(x, y, time) {
     }
 
     function appendMole() {
-
         var min = 0
         var max = moles.length - 1
         var randPos = Math.floor(Math.random() * (max - min + 1)) + min;
@@ -102,7 +96,6 @@ var Hole = function(x, y, time) {
         appendChild("./images/" + moles[randPos] + ".PNG")
         playAudio('pop')
         img.addEventListener('click', whack)
-
     }
 
     function appendHole() {
