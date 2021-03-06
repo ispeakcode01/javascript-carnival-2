@@ -1,4 +1,4 @@
-var Hole = function(x, y) {
+var Hole = function(id, x, y) {
     
     var moles = ["mole-10", "mole-20", "mole-30"]
     var xPos = x
@@ -9,6 +9,7 @@ var Hole = function(x, y) {
     var hole
     var img
     var showMole = true
+    var id
 
     init()
 
@@ -40,12 +41,15 @@ var Hole = function(x, y) {
         var filename = splitted[splitted.length-1]
         var score = parseInt(filename.split('.')[0].split("-")[1],10)
         var scoreElement = document.querySelector('#score')
-        setScore(parseInt(scoreElement.innerHTML) + score)
+        setScore("+" + score, parseInt( scoreElement.innerHTML) + score)
     }
 
-    function setScore(score) {
+    function setScore(point, score) {
         var scoreElement = document.querySelector('#score')
         scoreElement.innerHTML = score
+        //container.innerHTML = point
+        //container.style.color = white;
+        showPoints(id, point)
     }
 
     function miss() {
@@ -54,7 +58,7 @@ var Hole = function(x, y) {
         var newScore = parseInt(scoreElement.innerHTML) - 100
         if (newScore < 0)
             newScore = 0
-        setScore(newScore)
+        setScore(-100, newScore)
     }
 
     function removeMole() {

@@ -15,6 +15,16 @@ h3 {
   
 }
 
+.point {
+  color: white;
+  font-size: 2rem;
+  position: absolute;
+}
+
+.disabled {
+  display: none;
+}
+
 .initialHammer {
   -webkit-transform: rotate(-45deg);
   -moz-transform: rotate(-45deg);
@@ -31,6 +41,18 @@ h3 {
 
 .header {
   background-color: #5e401e;
+}
+
+.menu {
+  position: absolute; 
+  width: 300px; 
+  height: 400px; 
+  background-color: white; 
+  top: calc(50% - 220px); 
+  left: calc(50% - 160px);
+  font-size: x-large;
+  padding: 20px;
+  display: none;
 }
 
 table {
