@@ -29,10 +29,15 @@ var Hole = function(x, y, time) {
     function whack() {
         playAudio('whack')
 
+        calculateNewScore()
+        removeMole()
+        
+    }
+
+    function calculateNewScore() {
         var splitted = img.src.split('/')
         var filename = splitted[splitted.length-1]
         var score = parseInt(filename.split('.')[0].split("-")[1],10)
-
         var scoreElement = document.querySelector('#score')
         setScore(parseInt(scoreElement.innerHTML) + score)
     }
@@ -54,6 +59,13 @@ var Hole = function(x, y, time) {
 
     }
 
+    function removeMole() {
+        removeChild(img)
+        img.removeEventListener('click', whack)
+        appendHole()
+        showMole = !showMole
+    }
+
     this.start = function() {
         interval = setInterval(animate, intervalTime)
     }
@@ -66,17 +78,12 @@ var Hole = function(x, y, time) {
         if (showMole) {
             removeChild(hole)
             img.removeEventListener('click', miss)
-
             appendMole()
-
+            showMole = !showMole
         } else {
-            removeChild(img)
-            img.removeEventListener('click', whack)
-
-            appendHole()
+            removeMole()
         }
 
-        showMole = !showMole
     }
 
     
