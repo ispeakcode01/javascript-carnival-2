@@ -28,14 +28,38 @@ var Hole = function(x, y, time) {
 
     function whack() {
         playAudio('whack')
+
+        var splitted = img.src.split('/')
+        var filename = splitted[splitted.length-1]
+        var score = parseInt(filename.split('.')[0].split("-")[1],10)
+
+        var scoreElement = document.querySelector('#score')
+        setScore(parseInt(scoreElement.innerHTML) + score)
+    }
+
+    function setScore(score) {
+        var scoreElement = document.querySelector('#score')
+        scoreElement.innerHTML = score
     }
 
     function miss() {
         playAudio('miss')
+        var scoreElement = document.querySelector('#score')
+        var newScore = parseInt(scoreElement.innerHTML) - 100
+        if (newScore < 0)
+            newScore = 0
+
+        setScore(newScore)
+
+
     }
 
     this.start = function() {
         interval = setInterval(animate, intervalTime)
+    }
+
+    this.stop = function() {
+        clearInterval(interval)
     }
 
     function animate() {

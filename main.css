@@ -1,6 +1,7 @@
 body {
 	font-family: 'Rye', cursive;
-	background-color: LightPink;
+	background-color: #5e401e;
+  color: black;
 }
 
 h1 { 
@@ -8,6 +9,10 @@ h1 {
 	margin-bottom: 50px;
 	font-size: 3em;
 	text-align: center;
+}
+
+.header {
+  background-color: #5e401e;
 }
 
 table {
@@ -22,7 +27,8 @@ img {
 }
 
 td {
-  background-color:  rgb(68, 36, 36);
+  text-align: center;
+  background-color:  #422300;
   height: 95px;
   width: 95px;
 }

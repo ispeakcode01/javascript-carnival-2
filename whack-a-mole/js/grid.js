@@ -18,7 +18,8 @@ var grid = (function() {
     }
 
     function createCellElement() {
-        var table = document.querySelector('table')
+        var table = document.querySelectorAll('table')[1]
+        table.style.border = "10px solid black"
         for (var row=0; row<ROW; row++) {
             var tr = document.createElement('tr')
             for (var col=0; col<COL; col++) {
@@ -32,6 +33,7 @@ var grid = (function() {
                     var img = document.createElement('img')
                     img.className = "hole"
                     img.src = "./images/hole.png"
+                    td.style.border = "1px dashed black"
                     td.appendChild(img)
 
                 }
