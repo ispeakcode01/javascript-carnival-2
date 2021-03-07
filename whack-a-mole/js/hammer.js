@@ -8,6 +8,9 @@ var currentY
 
 
 document.addEventListener('mousemove', function(e) {
+
+
+
     //var area = getGameArea()
     //console.log('dd: ' + e.y)
     //console.log(area)
@@ -15,8 +18,8 @@ document.addEventListener('mousemove', function(e) {
         //alert('dd')
        // console.log('dd: ' + e.x)
         var padding =100
-        hammer.style.top = (e.y - padding) + "px"
-        hammer.style.left = (e.x ) + "px"
+        //hammer.style.top = (e.y - padding) + "px"
+        //hammer.style.left = (e.x ) + "px"
 
         currentX = e.x 
         currentY = e.y

@@ -64,6 +64,7 @@ table {
 img {
   width: 95px;
   height: auto;
+-webkit-user-drag: none;
 }
 
 td {

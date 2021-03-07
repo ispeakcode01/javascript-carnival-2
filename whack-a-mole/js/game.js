@@ -29,7 +29,6 @@ var game = (function () {
 
     function startTimer() {
         timeout = setTimeout(function () {
-            alert('clear')
             clearTimeout(timeout)
             holes.forEach(hole => {
                 clearInterval(interval)
@@ -77,26 +76,20 @@ var game = (function () {
     function showMenu() {
         var menu = document.getElementsByClassName('menu')[0]
         menu.style.display = 'initial'
-        console.log(menu.childNodes[2])
         menu.querySelector('#best').innerHTML = getBestScore()
     }
 
     function setBestScore() {
         var score = parseInt(document.getElementById('score').innerHTML)
-        var best = localStorage.getItem('score')
-        if (best) {
-            if (best < score)
-                localStorage.setItem("score", score)
-        } else {
+        var bestScore = getBestScore()
+        if (bestScore <= score)
             localStorage.setItem("score", score)
-        }
     }
 
     function getBestScore() {
         var best = localStorage.getItem('score')
         if (best)
             return best
-
         return 0
     }
 
