@@ -89,20 +89,33 @@ td {
   display: block;
   margin-left: auto;
   margin-right: auto;
-  width: 50%;
+  width: 100%;
   position: relative;
   top: 0;
   left: 0;
 }
 
 .dress-an-image {
+
   position: absolute;
+  width: 400px;
   top: 0px;
-  left: 0px;
+  left: calc(50% - 200px);
+}
+
+.state {
+  background-color: white;
+  width: 200px;
+  height: 100px;
+  padding: 20px;
+  border-radius: 10px;
+
+  position: relative;
+  left: calc(75% - 200px)
 }
 
 .head {
-  z-index: 2
+  z-index: 2;
 }
 
 .body {
