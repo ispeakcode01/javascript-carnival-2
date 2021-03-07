@@ -17,6 +17,13 @@ var grid = (function() {
         return playObj
     }
 
+    function clearGrid() {
+       var gameBoard = document.querySelectorAll('table')[1]
+       gameBoard.innerHTML = ""
+       holes = []
+       createCellElement()
+    }
+
     function createCellElement() {
         var table = document.querySelectorAll('table')[1]
         table.style.border = "10px solid black"
@@ -54,7 +61,8 @@ var grid = (function() {
     return {
         getElement: getElement,
         playAudio: playAudio,
-        getHoles: getHoles
+        getHoles: getHoles,
+        resetGrid: clearGrid
     }
 
 }())

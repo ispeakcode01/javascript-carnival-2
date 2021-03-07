@@ -8,12 +8,19 @@ var currentY
 
 
 document.addEventListener('mousemove', function(e) {
-    var padding =100
-    hammer.style.top = (e.y - padding) + "px"
-    hammer.style.left = (e.x ) + "px"
+    //var area = getGameArea()
+    //console.log('dd: ' + e.y)
+    //console.log(area)
+    //if (area.left <= e.x && area.right >= e.x) {//} && area.top <= e.y && area.bottom >= e.y) {
+        //alert('dd')
+       // console.log('dd: ' + e.x)
+        var padding =100
+        hammer.style.top = (e.y - padding) + "px"
+        hammer.style.left = (e.x ) + "px"
 
-    currentX = e.x 
-    currentY = e.y
+        currentX = e.x 
+        currentY = e.y
+//    }
 
 })
 
@@ -24,6 +31,18 @@ document.addEventListener('mousedown', function () {
 document.addEventListener('mouseup', function () {
     hammer.className = "initialHammer"
 })
+
+function getGameArea() {
+    var border = 10
+    var table = document.querySelector('table')
+    return {
+        left: table.offsetLeft - border,
+        right: table.offsetLeft + table.offsetWidth + border,
+        top: table.offsetTop,
+        bottom: table.offsetHeight + border
+    }
+
+}
 
 function showPoints(id, points) {
     console.log(id)
