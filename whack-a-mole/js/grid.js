@@ -5,6 +5,8 @@ var grid = (function() {
     var holes = []
 
     init()
+    positionHammer()
+
 
     function init() {
         createCellElement()
@@ -31,6 +33,7 @@ var grid = (function() {
             var tr = document.createElement('tr')
             for (var col=0; col<COL; col++) {
                 var td = document.createElement('td')
+
                 td.id = `row-${row} col-${col}`
                 if (row % 2 != 0 && col % 2 != 0) {
                     holes.push({

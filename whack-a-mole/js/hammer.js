@@ -6,38 +6,61 @@ hammer.style.position = "absolute"
 var currentX 
 var currentY
 
+var registerEvent = true
+document.addEventListener('mousemove', onMoveOverGame)
 
-document.addEventListener('mousemove', function(e) {
 
 
+function positionHammer() {
+    hammer.style.display = "initial"
+    var gameArea = getGameArea()
+    hammer.style.left = (gameArea.left + ((gameArea.right - gameArea.left)/2) - 95/2) + "px"
+    hammer.style.top = (gameArea.top + ((gameArea.bottom - gameArea.top)/2) - 95/2) + "px"
+}
 
-    //var area = getGameArea()
-    //console.log('dd: ' + e.y)
-    //console.log(area)
-    //if (area.left <= e.x && area.right >= e.x) {//} && area.top <= e.y && area.bottom >= e.y) {
-        //alert('dd')
-       // console.log('dd: ' + e.x)
+function onMoveOverGame(e) {
+    var gameArea = getGameArea()
+    if (gameArea.left <= e.x && gameArea.right >= e.x && gameArea.top <= e.y && gameArea.bottom >= e.y) {
         var padding =100
-        //hammer.style.top = (e.y - padding) + "px"
-        //hammer.style.left = (e.x ) + "px"
-
+        hammer.style.top = (e.y - padding) + "px"
+        hammer.style.left = (e.x ) + "px"
         currentX = e.x 
         currentY = e.y
-//    }
 
-})
+        if (registerEvent) {
+            document.addEventListener('mousedown', onClick)
+            document.addEventListener('mouseup', onRelease)
+            registerEvent = false
+        }
 
-document.addEventListener('mousedown', function () {
+
+
+
+    } else {
+        positionHammer()
+
+        document.removeEventListener('mousedown', onClick)
+        document.removeEventListener('mouseup', onRelease)
+
+        registerEvent = true
+    }
+}
+
+function onClick() {
     hammer.className = "hit"
-})
+}
 
-document.addEventListener('mouseup', function () {
+function onRelease() {
     hammer.className = "initialHammer"
-})
+}
+
+
+
 
 function getGameArea() {
+
     var border = 10
-    var table = document.querySelector('table')
+    var table = document.querySelectorAll('table')[1]
     return {
         left: table.offsetLeft - border,
         right: table.offsetLeft + table.offsetWidth + border,
