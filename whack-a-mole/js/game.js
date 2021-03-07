@@ -11,6 +11,8 @@ var game = (function () {
     init()
 
     function init() {
+        displayTime()
+
         document.addEventListener('keypress', event => {
             if (event.code === 'Space' && !gameStarted) {
                 gameStarted = true
@@ -40,6 +42,18 @@ var game = (function () {
         }, TIME_OUT)
     }
 
+    function displayTime() {
+        var date = new Date(TIME_OUT)
+        var minutes = date.getMinutes()
+        var seconds = date.getSeconds()
+        if (minutes < 10)
+            minutes = "0" + minutes
+
+        if (seconds < 10)
+            seconds = "0" + seconds
+        document.querySelector('#timer').innerHTML = `00:${minutes}:${seconds}`
+    }
+
     function reset() {
         gameMusic.load()
         countDown = 60
@@ -49,6 +63,7 @@ var game = (function () {
         clearTimeout(timeout)
         grid.resetGrid()
         holes = []
+        displayTime()
     }
 
     function start() {

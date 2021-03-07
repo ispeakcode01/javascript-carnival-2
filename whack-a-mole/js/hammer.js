@@ -10,7 +10,6 @@ var registerEvent = true
 document.addEventListener('mousemove', onMoveOverGame)
 
 
-
 function positionHammer() {
     hammer.style.display = "initial"
     var gameArea = getGameArea()
